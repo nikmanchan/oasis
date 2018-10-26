@@ -31,6 +31,7 @@ const AddRestaurant = () => (
           <option value="5">5</option>
         </select>
         <input placeholder="comments"></input>
+        <input placeholder="image_url"></input>
         <input type="submit"></input>
     </form>
   </div>
