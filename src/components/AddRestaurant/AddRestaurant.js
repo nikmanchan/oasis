@@ -1,10 +1,5 @@
 import React from 'react';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
-
 const AddRestaurant = () => (
   <div>
     <h2>
@@ -14,13 +9,27 @@ const AddRestaurant = () => (
     <form>
         <input placeholder="name"></input>
         <input placeholder="street address"></input>
-        <select placeholder="restriction">restriction
-        <option>restriction</option>
+        <select placeholder="restriction">
+        <option value="" disabled selected>restriction</option>
+          <option>vegetarian</option>
+          <option>vegan</option>
         </select>
-        <select><option>friendliness rating</option></select>
-        <select><option>
-        costliness rating
-            </option>costliness rating</select>
+        <select>
+        <option value="" disabled selected>friendliness rating</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <select>
+          <option value="" disabled selected>costliness rating</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
         <input placeholder="comments"></input>
         <input type="submit"></input>
     </form>

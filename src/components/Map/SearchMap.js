@@ -128,7 +128,9 @@ handleToggleOpen = () => {
                   <Marker position={{ lat: 44.9836, lng: -93.2697 }} onClick={this.handleToggleOpen}>
                   {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
                     <p>
-                      Moo!
+                      Red Cow North Loop
+                      <br></br>
+                      Address: 208 N 1st Ave, Minneapolis, MN 55401
                     </p>
                     </InfoWindow>}
                   </Marker>
