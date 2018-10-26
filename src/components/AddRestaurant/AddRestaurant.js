@@ -11,24 +11,24 @@ const AddRestaurant = () => (
         <input placeholder="street address"></input>
         <select placeholder="restriction">
         <option value="" disabled selected>restriction</option>
-          <option>vegetarian</option>
-          <option>vegan</option>
+          <option value="vegetarian">vegetarian</option>
+          <option value="vegan">vegan</option>
         </select>
         <select>
-        <option value="" disabled selected>friendliness rating</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          <option value="" disabled selected>friendliness rating</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
         <select>
           <option value="" disabled selected>costliness rating</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
         <input placeholder="comments"></input>
         <input type="submit"></input>
