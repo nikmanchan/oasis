@@ -116,8 +116,8 @@ handleToggleOpen = () => {
                 {this.state.markers.map((marker, index) =>
                     <Marker key={index} position={marker.position} />
                   )}
-                  <Marker position={{ lat: 44.9780, lng: -93.2635 }} onClick={this.props.onMarkerClick}>
-                    <InfoWindow onCloseClick={this.handleToggleOpen}>
+                  <Marker position={{ lat: 44.9780, lng: -93.2635 }} onClick={this.handleToggleOpen}>
+                {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
                       <p>
                         Yummy!
                       </p>
@@ -125,8 +125,8 @@ handleToggleOpen = () => {
                   
                   </Marker>
                   
-                  <Marker position={{ lat: 44.9836, lng: -93.2697 }} onClick={this.props.onMarkerClick}>
-                    <InfoWindow onCloseClick={this.handleToggleOpen}>
+                  <Marker position={{ lat: 44.9836, lng: -93.2697 }} onClick={this.handleToggleOpen}>
+                  {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
                     <p>
                       Moo!
                     </p>
