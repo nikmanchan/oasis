@@ -46,27 +46,35 @@ class AddRestaurant extends Component {
       <form onSubmit={this.handleSubmit}>
           <input placeholder="name" value={this.state.name} onChange={this.handleChange('name')} ></input>
           <input placeholder="address" value={this.state.address} onChange={this.handleChange('address')}></input>
-          <select placeholder="restriction" value={this.state.restriction} onChange={this.handleChange('restriction')}>
-          <option value="" disabled selected >restriction</option>
+
+          <p>restriction:
+          <select value={this.state.restriction} onChange={this.handleChange('restriction')}>
             <option value="vegetarian">vegetarian</option>
             <option value="vegan">vegan</option>
           </select>
-          <select onChange={this.handleChange('friendlinessRating')} value={this.state.friendlinessRating}>
-            <option value="" disabled selected>friendliness rating</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+          </p>
+
+          <p>friendliness rating:
+            <select onChange={this.handleChange('friendlinessRating')} value={this.state.friendlinessRating}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+
+          </p>
+          <p>
+          costliness rating:
           <select value={this.state.costlinessRating} onChange={this.handleChange('costlinessRating')}>
-            <option value="" defaultValue>costliness rating</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
+          </p>
+
           <input placeholder="comments" value={this.state.comments} onChange={this.handleChange('comments')}></input>
           <input placeholder="image_url" value={this.state.image_url} onChange={this.handleChange('image_url')}></input>
           <input type="submit"></input>

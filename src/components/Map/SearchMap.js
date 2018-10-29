@@ -122,7 +122,7 @@ handleToggleOpen = () => {
                     </InfoWindow>}
                   </Marker>
 
-                  {this.props.state.restaurants.map(restaurant => <Marker position={{ lat: Number(restaurant.latitude), lng: Number(restaurant.longitude) }} onClick={this.handleToggleOpen}> 
+                  {this.props.state.restaurants.map(restaurant => <Marker key={restaurant.id} position={{ lat: Number(restaurant.latitude), lng: Number(restaurant.longitude) }} onClick={this.handleToggleOpen}> 
                     {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
                       <p>
                         {restaurant.name}
