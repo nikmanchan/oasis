@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Geocode from "react-geocode";
+
+
+Geocode.setApiKey("AIzaSyCZv9A4Vtnra6r04z9JnNk91zeXwX82O68");
 
 class AddRestaurant extends Component {
+
   state={
     name: '',
     address: '',
@@ -10,24 +15,48 @@ class AddRestaurant extends Component {
     costlinessRating: 0,
     comments: '',
     image_url: '',
+    latitude: '',
+    longitude: '',
   }
 
   handleSubmit = (event) => {
-    // event.preventdefault();
-    this.props.dispatch({
-      type: 'ADD_RESTAURANT',
-      payload: this.state
-    })
-    this.setState({
-      name: '',
-      address: '',
-      restriction: '',
-      friendlinessRating: 0,
-      costlinessRating: 0,
-      comments: '',
-      image_url: '',
-    })
-  }
+    event.preventDefault();
+    
+    // convert Address to coordinates
+    Geocode.fromAddress(this.state.address).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+
+        // Add new coordinates to state
+        this.setState({
+          ...this.state,
+          latitude: lat,
+          longitude: lng,
+        })
+
+        this.props.dispatch({
+          type: 'ADD_RESTAURANT',
+          payload: this.state
+        })
+
+        // Clear input form
+        this.setState({
+          name: '',
+          address: '',
+          restriction: '',
+          friendlinessRating: 0,
+          costlinessRating: 0,
+          comments: '',
+          image_url: '',
+          latitude: '',
+          longitude: '',
+        })
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  } // End handleSubmit
 
   handleChange = (property) => (event) => {
     this.setState({
@@ -42,7 +71,7 @@ class AddRestaurant extends Component {
       <h2>
         Add Restaurant
       </h2>
-  
+      
       <form onSubmit={this.handleSubmit}>
           <input placeholder="name" value={this.state.name} onChange={this.handleChange('name')} ></input>
           <input placeholder="address" value={this.state.address} onChange={this.handleChange('address')}></input>

@@ -18,8 +18,9 @@ router.get('/', (req, res) => {
 });
 
 /**
- * POST new restaurant
+ * POST restaurant to Database
  */
+
 router.post('/', (req, res) => {
     const query = `INSERT INTO "restaurant" ("name", "latitude", "longitude", "restriction", "friendliness", 
     "costliness", "comments", "image_url")
@@ -29,5 +30,7 @@ router.post('/', (req, res) => {
         res.sendStatus(201);
     }).catch(error => {
         console.log('Error with restaurant POST to database: ', error);
-    });
+    })
 });
+
+module.exports = router;
