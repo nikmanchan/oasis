@@ -9,6 +9,11 @@ class MapPage extends Component {
     isMarkerShown: false,
   }
 
+  componentDidMount() {
+    this.props.dispatch({type: 'GET_RESTAURANTS' });
+
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.dispatch({
@@ -22,6 +27,8 @@ class MapPage extends Component {
       [property]: event.target.value,
     });
   }
+
+
 
   render() {
     return (

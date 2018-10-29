@@ -87,14 +87,12 @@ handleToggleOpen = () => {
                 ref={this.state.onMapMounted}
                 defaultZoom={14}
                 center={this.state.center}
-                onBoundsChanged={this.props.onBoundsChanged}
-            >
+                onBoundsChanged={this.props.onBoundsChanged}>
                 <SearchBox
                 ref={this.state.onSearchBoxMounted}
                 bounds={this.state.bounds}
                 controlPosition={google.maps.ControlPosition.TOP_LEFT}
-                onPlacesChanged={this.state.onPlacesChanged}
-                >
+                onPlacesChanged={this.state.onPlacesChanged}>
                     <input
                         type="text"
                         placeholder="Enter Search Location"
@@ -117,14 +115,22 @@ handleToggleOpen = () => {
                     <Marker key={index} position={marker.position} />
                   )}
                   <Marker position={{ lat: 44.9780, lng: -93.2635 }} onClick={this.handleToggleOpen}>
-                {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
+                    {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
                       <p>
                         Yummy!
                       </p>
                     </InfoWindow>}
-                  
                   </Marker>
+
+                  {this.props.state.restaurants.map(restaurant => <Marker position={{ lat: Number(restaurant.latitude), lng: Number(restaurant.longitude) }} onClick={this.handleToggleOpen}> 
+                    {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
+                      <p>
+                        {restaurant.name}
+                      </p>
+                    </InfoWindow>}
+                  </Marker>)}
                   
+
                   <Marker position={{ lat: 44.9836, lng: -93.2697 }} onClick={this.handleToggleOpen}>
                   {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
                     <p>
@@ -138,6 +144,7 @@ handleToggleOpen = () => {
                   {this.isMarkerShown && <Marker position={{ lat: 44.9738, lng: -93.2578 }} onClick={this.handleMarkerClick} />}
                   {this.isMarkerShown && <Marker position={{ lat: 44.9828, lng: -93.2695 }} onClick={this.handleMarkerClick} />}
         </GoogleMap>
+        
 
         </div>
         );

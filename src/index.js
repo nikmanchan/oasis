@@ -4,13 +4,44 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
+import { put, takeLatest, takeEvery, call } from 'redux-saga/effects';
+import axios from 'axios';
+
 
 import rootReducer from './redux/reducers'; // imports ./redux/reducers/index.js
 import rootSaga from './redux/sagas'; // imports ./redux/sagas/index.js
 
 import App from './components/App/App';
+// function* rootSaga() {
+//   yield takeEvery('GET_RESTAURANTS', getRestaurants);
+// }
+
+// function* getRestaurants(action) {
+// try {
+//   const address = yield call(
+//     axios.get('/api/restaurant')
+//     .then(response => response.data)
+//     .catch((error) => { throw error.response || error; })
+
+// );
+//   yield put({ type: 'SET_ADDRESS', payload: address.data });
+// } catch (error) {
+//   console.log('error getting address:', error);
+// }
+// }
 
 const sagaMiddleware = createSagaMiddleware();
+
+const mapRequest = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_ADDRESS':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+
 
 // this line creates an array of all of redux middleware you want to use
 // we don't want a whole ton of console logs in our production code
@@ -37,3 +68,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('react-root'),
 );
+
