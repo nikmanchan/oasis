@@ -11,7 +11,9 @@ state = {
       lat: 44.9765, lng: -93.2761
     },
     isMarkerShown: false,
-    isOpen: false,
+    showInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {},
 }
 componentWillMount() {
     const refs = {}
@@ -70,15 +72,15 @@ delayedShowMarker = () => {
 
 handleMarkerClick = () => {
   this.setState({ isMarkerShown: false })
-  this.delayedShowMarker()
-}
+  this.delayedShowMarker();
+};
 
-handleToggleOpen = () => {
-
+onMarkerClick = (props, marker) => 
   this.setState({
-    isOpen: !this.state.isOpen,
+    selectedPlace: props,
+    activeMarker: {},
+    showInfoWindow: true,
   })
-}
 
   render() {
     return (
@@ -114,16 +116,16 @@ handleToggleOpen = () => {
                 {this.state.markers.map((marker, index) =>
                     <Marker key={index} position={marker.position} />
                   )}
-                  <Marker position={{ lat: 44.9780, lng: -93.2635 }} onClick={this.handleToggleOpen}>
-                    {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
+                  <Marker position={{ lat: 44.9780, lng: -93.2635 }} onClick={this.props.handleToggleOpen}>
+                    {this.props.isOpen && <InfoWindow onCloseClick={this.props.handleToggleOpen}>
                       <p>
                         Yummy!
                       </p>
                     </InfoWindow>}
                   </Marker>
 
-                  {this.props.state.restaurants.map(restaurant => <Marker key={restaurant.id} position={{ lat: Number(restaurant.latitude), lng: Number(restaurant.longitude) }} onClick={this.handleToggleOpen}> 
-                    {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
+                  {this.props.state.restaurants.map(restaurant => <Marker key={restaurant.id} position={{ lat: Number(restaurant.latitude), lng: Number(restaurant.longitude) }} onClick={this.props.handleToggleOpen}> 
+                    {this.props.isOpen && <InfoWindow onCloseClick={this.props.handleToggleOpen}>
                       <p>
                         {restaurant.name}
                       </p>
@@ -131,16 +133,27 @@ handleToggleOpen = () => {
                   </Marker>)}
                   
 
-                  <Marker position={{ lat: 44.9836, lng: -93.2697 }} onClick={this.handleToggleOpen}>
-                  {this.state.isOpen && <InfoWindow onCloseClick={this.handleToggleOpen}>
+                  <Marker position={{ lat: 44.9836, lng: -93.2697 }} onClick={this.props.handleToggleOpen} />
+                  {/* Begin Tony's example */}
+                  {/* {this.props.state.restaurants.map(restaurant => (
+                    <Marker key={restaurant.id} onClick={this.onMarkerClick}
+                            address={restaurant.address}
+                            position={{ lat: restaurant.latitude, lng: restaurant.longitude}} />
+                  ))}
+
+                  <InfoWindow 
+                  marker={this.state.activeMarker}
+                  visible={this.state.showInfoWindow}
+                  maxWidth="200"
+                  onCloseClick={this.props.handleToggleOpen}>
+                  
                     <p>
                       Red Cow North Loop
                       <br></br>
                       Address: 208 N 1st Ave, Minneapolis, MN 55401
                     </p>
-                    </InfoWindow>}
-                  </Marker>
-              
+                  </InfoWindow> */}
+              {/* END TONY'S EXAMPLE */}
                   {this.isMarkerShown && <Marker position={{ lat: 44.9738, lng: -93.2578 }} onClick={this.handleMarkerClick} />}
                   {this.isMarkerShown && <Marker position={{ lat: 44.9828, lng: -93.2695 }} onClick={this.handleMarkerClick} />}
         </GoogleMap>

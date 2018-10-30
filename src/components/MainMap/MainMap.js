@@ -5,8 +5,13 @@ import { connect } from 'react-redux';
 class MainMap extends Component {
   state = {
     isMarkerShown: false,
+    isOpen: false,
   }
-
+  handleToggleOpen = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  };
 
   render() {
     return (
@@ -18,6 +23,9 @@ class MainMap extends Component {
             mapElement = {<div style={{ height: `100%` }} />}
             isMarkerShown={this.state.isMarkerShown}
             onMarkerClick={this.handleMarkerClick}
+            handleToggleOpen={this.handleToggleOpen}
+            isOpen = {this.state.isOpen}
+
         />
       </div>
     );
