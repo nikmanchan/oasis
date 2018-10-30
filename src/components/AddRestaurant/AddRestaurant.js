@@ -11,8 +11,8 @@ class AddRestaurant extends Component {
     name: '',
     address: '',
     restriction: '',
-    friendlinessRating: 0,
-    costlinessRating: 0,
+    friendliness: 0,
+    costliness: 0,
     comments: '',
     image_url: '',
     latitude: '',
@@ -44,8 +44,8 @@ class AddRestaurant extends Component {
           name: '',
           address: '',
           restriction: '',
-          friendlinessRating: 0,
-          costlinessRating: 0,
+          friendliness: 0,
+          costliness: 0,
           comments: '',
           image_url: '',
           latitude: '',
@@ -84,7 +84,7 @@ class AddRestaurant extends Component {
           </p>
 
           <p>friendliness rating:
-            <select onChange={this.handleChange('friendlinessRating')} value={this.state.friendlinessRating}>
+            <select onChange={this.handleChange('friendliness')} value={this.state.friendliness}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -95,7 +95,7 @@ class AddRestaurant extends Component {
           </p>
           <p>
           costliness rating:
-          <select value={this.state.costlinessRating} onChange={this.handleChange('costlinessRating')}>
+          <select value={this.state.costliness} onChange={this.handleChange('costliness')}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
