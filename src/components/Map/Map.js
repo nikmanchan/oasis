@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import { SearchBox } from 'react-google-maps/lib/components/places/SearchBox';
 import _ from 'lodash';
+import RestaurantMarker from '../Marker/Marker'
 /* global google */
+
 class Map extends React.Component {
-state = {
+  state = {
     bounds: null,
     center: {
       lat: 44.9765, lng: -93.2761
@@ -14,8 +16,10 @@ state = {
     showInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
-}
-componentWillMount() {
+    windowPosition: null,
+  }
+
+  componentWillMount() {
     const refs = {}
 
     this.setState({
@@ -59,112 +63,67 @@ componentWillMount() {
         refs.map.fitBounds(bounds);
       },
     })
-}
-componentDidMount() {
-  this.delayedShowMarker()
-}
+  }
+  
+  componentDidMount() {
+    this.delayedShowMarker()
+  }
 
-delayedShowMarker = () => {
-  setTimeout(() => {
-    this.setState({ isMarkerShown: true })
-  }, 3000)
-}
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({ isMarkerShown: true })
+    }, 3000)
+  }
 
-handleMarkerClick = () => {
-  this.setState({ isMarkerShown: false })
-  this.delayedShowMarker();
-};
 
-onMarkerClick = (props, marker) => 
-  this.setState({
-    selectedPlace: props,
-    activeMarker: {},
-    showInfoWindow: true,
-  })
 
   render() {
     return (
-        <div>
-            <GoogleMap
-                ref={this.state.onMapMounted}
-                defaultZoom={14}
-                center={this.state.center}
-                onBoundsChanged={this.props.onBoundsChanged}>
-                <SearchBox
-                ref={this.state.onSearchBoxMounted}
-                bounds={this.state.bounds}
-                controlPosition={google.maps.ControlPosition.TOP_LEFT}
-                onPlacesChanged={this.state.onPlacesChanged}>
-                    <input
-                        type="text"
-                        placeholder="Enter Search Location"
-                        style={{
-                          boxSizing: `border-box`,
-                          border: `1px solid transparent`,
-                          width: `240px`,
-                          height: `32px`,
-                          marginTop: `27px`,
-                          padding: `0 12px`,
-                          borderRadius: `3px`,
-                          boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                          fontSize: `14px`,
-                          outline: `none`,
-                          textOverflow: `ellipses`,
-                        }}
-                        />
-                </SearchBox>
-                {this.state.markers.map((marker, index) =>
-                    <Marker key={index} position={marker.position} />
-                  )}
-                  <Marker position={{ lat: 44.9780, lng: -93.2635 }} onClick={this.props.handleToggleOpen}>
-                    {this.props.isOpen && <InfoWindow onCloseClick={this.props.handleToggleOpen}>
-                      <p>
-                        Yummy!
-                      </p>
-                    </InfoWindow>}
-                  </Marker>
+      <div>
+        <GoogleMap
+          ref={this.state.onMapMounted}
+          defaultZoom={14}
+          center={this.state.center}
+          onBoundsChanged={this.props.onBoundsChanged}>
+          <SearchBox
+            ref={this.state.onSearchBoxMounted}
+            bounds={this.state.bounds}
+            controlPosition={google.maps.ControlPosition.TOP_LEFT}
+            onPlacesChanged={this.state.onPlacesChanged}>
+            <input
+              type="text"
+              placeholder="Enter Search Location"
+              style={{
+                boxSizing: `border-box`,
+                border: `1px solid transparent`,
+                width: `240px`,
+                height: `32px`,
+                marginTop: `27px`,
+                padding: `0 12px`,
+                borderRadius: `3px`,
+                boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                fontSize: `14px`,
+                outline: `none`,
+                textOverflow: `ellipses`,
+              }}
+            />
+          </SearchBox>
 
-                  {this.props.state.restaurants.map(restaurant => <Marker key={restaurant.id} position={{ lat: Number(restaurant.latitude), lng: Number(restaurant.longitude) }} onClick={this.props.handleToggleOpen}> 
-                    {this.props.isOpen && <InfoWindow onCloseClick={this.props.handleToggleOpen}>
-                      <p>
-                        {restaurant.name}
-                      </p>
-                    </InfoWindow>}
-                  </Marker>)}
-                  
+          {/*  Display Markers with InfoWindows */}
+          {this.props.state.restaurants.map(restaurant => <RestaurantMarker key={restaurant.id}
+            position={{ lat: Number(restaurant.latitude), lng: Number(restaurant.longitude) }}
+            name={restaurant.name}
+          />)}
 
-                  <Marker position={{ lat: 44.9836, lng: -93.2697 }} onClick={this.props.handleToggleOpen} />
-                  {/* Begin Tony's example */}
-                  {/* {this.props.state.restaurants.map(restaurant => (
-                    <Marker key={restaurant.id} onClick={this.onMarkerClick}
-                            address={restaurant.address}
-                            position={{ lat: restaurant.latitude, lng: restaurant.longitude}} />
-                  ))}
+          {/* End Markers Display */}
 
-                  <InfoWindow 
-                  marker={this.state.activeMarker}
-                  visible={this.state.showInfoWindow}
-                  maxWidth="200"
-                  onCloseClick={this.props.handleToggleOpen}>
-                  
-                    <p>
-                      Red Cow North Loop
-                      <br></br>
-                      Address: 208 N 1st Ave, Minneapolis, MN 55401
-                    </p>
-                  </InfoWindow> */}
-              {/* END TONY'S EXAMPLE */}
-                  {this.isMarkerShown && <Marker position={{ lat: 44.9738, lng: -93.2578 }} onClick={this.handleMarkerClick} />}
-                  {this.isMarkerShown && <Marker position={{ lat: 44.9828, lng: -93.2695 }} onClick={this.handleMarkerClick} />}
         </GoogleMap>
-        
-
-        </div>
-        );
-    }
+      </div>
+    );
+  }
 }
 const mapStateToProps = state => ({
-    state: state,
-  });
+  state: state,
+});
 
 export default connect(mapStateToProps)(withScriptjs(withGoogleMap(Map)))

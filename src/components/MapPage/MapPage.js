@@ -1,39 +1,37 @@
 import React, { Component } from 'react';
-import MainMap from '../MainMap/MainMap'
+import Map from '../Map/Map'
 import { connect } from 'react-redux';
 
-class MapPage extends Component {
+class MainMap extends Component {
   state = {
-    input: '',
-    radius: 0,
     isMarkerShown: false,
+    isOpen: false,
   }
 
   componentDidMount() {
     this.props.dispatch({type: 'GET_RESTAURANTS' });
-
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.props.dispatch({
-      type: 'GET_ADDRESS', payload: this.state
-    })
-  }
-
-  handleChange = (property) => (event) => {
+  handleToggleOpen = () => {
     this.setState({
-      ...this.state,
-      [property]: event.target.value,
+      isOpen: !this.state.isOpen,
     });
-  }
-
-
+  };
 
   render() {
     return (
       <div>
-        <MainMap />
+        <Map 
+            googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCZv9A4Vtnra6r04z9JnNk91zeXwX82O68&v=3.exp&libraries=geometry,drawing,places"
+            loadingElement = {<div style={{ height: `100%` }} />}
+            containerElement = {<div style={{ height: `650px`, width: '75%'}} />}
+            mapElement = {<div style={{ height: `100%` }} />}
+            isMarkerShown={this.state.isMarkerShown}
+            onMarkerClick={this.handleMarkerClick}
+            handleToggleOpen={this.handleToggleOpen}
+            isOpen = {this.state.isOpen}
+
+        />
       </div>
     );
   }
@@ -43,5 +41,4 @@ const mapStateToProps = reduxState => ({
   reduxState,
 });
 
-export default connect(mapStateToProps)(MapPage);
-
+export default connect(mapStateToProps)(MainMap);
