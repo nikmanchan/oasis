@@ -16,7 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-import MapPage from '../MapPage/MapPage';
+import MainMap from '../MainMap/MainMap';
 import AddRestaurant from '../AddRestaurant/AddRestaurant';
 import RestaurantDetail from '../RestaurantDetail/RestaurantDetail';
 
@@ -61,7 +61,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/map"
-              component={MapPage}
+              component={MainMap}
             />
             <ProtectedRoute
               exact

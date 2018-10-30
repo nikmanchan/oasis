@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchBoxMap from '../Map/SearchMap'
+import Map from '../Map/Map'
 import { connect } from 'react-redux';
 
 class MainMap extends Component {
@@ -7,6 +7,11 @@ class MainMap extends Component {
     isMarkerShown: false,
     isOpen: false,
   }
+
+  componentDidMount() {
+    this.props.dispatch({type: 'GET_RESTAURANTS' });
+  }
+
   handleToggleOpen = () => {
     this.setState({
       isOpen: !this.state.isOpen,
@@ -16,7 +21,7 @@ class MainMap extends Component {
   render() {
     return (
       <div>
-        <SearchBoxMap 
+        <Map 
             googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCZv9A4Vtnra6r04z9JnNk91zeXwX82O68&v=3.exp&libraries=geometry,drawing,places"
             loadingElement = {<div style={{ height: `100%` }} />}
             containerElement = {<div style={{ height: `700px`, width: '75%'}} />}
