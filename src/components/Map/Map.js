@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
 import { SearchBox } from 'react-google-maps/lib/components/places/SearchBox';
 import _ from 'lodash';
 import RestaurantMarker from '../Marker/Marker'
@@ -64,7 +64,7 @@ class Map extends React.Component {
       },
     })
   }
-  
+
   componentDidMount() {
     this.delayedShowMarker()
   }
@@ -74,8 +74,6 @@ class Map extends React.Component {
       this.setState({ isMarkerShown: true })
     }, 3000)
   }
-
-
 
   render() {
     return (
