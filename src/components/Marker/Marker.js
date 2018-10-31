@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-    withRouter 
-  } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 // import google maps api for Marker and InfoWindow
 import { Marker, InfoWindow } from 'react-google-maps';
-import DetailButton from '../DetailButton/DetailButton'
 /* global google */
 
 
@@ -45,8 +43,8 @@ class RestaurantMarker extends Component {
             
             <div>
                 {this.props.name}
-                {/* <DetailButton id={this.props.id}/> */}
-                <button onClick={() => this.handleMoreDetailsClick(this.props.id)}>More Details</button>
+                <br></br>
+                <Button onClick={() => this.handleMoreDetailsClick(this.props.id)}>More Details</Button>
             </div>    
         </InfoWindow> }
         {/* End InfoWindow */}
