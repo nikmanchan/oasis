@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class RestaurantDetail extends Component {
-    componentDidMount() {
-        this.props.dispatch({type: 'GET_RESTAURANTS' });
+    // componentDidMount() {
+    //     this.props.dispatch({type: 'GET_RESTAURANTS' });
     
-      }
+    //   }
 
   render() {
     return (

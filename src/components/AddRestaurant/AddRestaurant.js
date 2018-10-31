@@ -34,6 +34,7 @@ class AddRestaurant extends Component {
           longitude: lng,
         })
 
+        // Send Restaurant to redux state
         this.props.dispatch({
           type: 'ADD_RESTAURANT',
           payload: this.state
@@ -74,13 +75,14 @@ class AddRestaurant extends Component {
       
       <form onSubmit={this.handleSubmit}>
           <input placeholder="name" value={this.state.name} onChange={this.handleChange('name')} ></input>
+          <br></br>
           <input placeholder="address" value={this.state.address} onChange={this.handleChange('address')}></input>
-
+      
           <p>restriction:
-          <select value={this.state.restriction} onChange={this.handleChange('restriction')}>
-            <option value="vegetarian">vegetarian</option>
-            <option value="vegan">vegan</option>
-          </select>
+            <select value={this.state.restriction} onChange={this.handleChange('restriction')}>
+              <option value="vegetarian">vegetarian</option>
+              <option value="vegan">vegan</option>
+            </select>
           </p>
 
           <p>friendliness rating:
@@ -91,20 +93,21 @@ class AddRestaurant extends Component {
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-
-          </p>
-          <p>
-          costliness rating:
-          <select value={this.state.costliness} onChange={this.handleChange('costliness')}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
           </p>
 
-          <input placeholder="comments" value={this.state.comments} onChange={this.handleChange('comments')}></input>
+          <p>costliness rating:
+            <select value={this.state.costliness} onChange={this.handleChange('costliness')}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </p>
+
+          <div>
+            <textarea divlaceholder="comments" value={this.state.comments} onChange={this.handleChange('comments')}></textarea>
+          </div>
           <input placeholder="image_url" value={this.state.image_url} onChange={this.handleChange('image_url')}></input>
           <input type="submit"></input>
       </form>

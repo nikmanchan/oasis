@@ -1,7 +1,5 @@
 const restaurants = (state = [], action) => {
     switch (action.type) {
-    //   case 'ADD_RESTAURANT':
-    //     return [...state, action.payload];
       case 'SET_RESTAURANTS':
         return action.payload;
       default:

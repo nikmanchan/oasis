@@ -15,7 +15,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 import MapPage from '../MapPage/MapPage';
 import AddRestaurant from '../AddRestaurant/AddRestaurant';
 import RestaurantDetail from '../RestaurantDetail/RestaurantDetail';
@@ -53,11 +52,6 @@ class App extends Component {
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-            <ProtectedRoute
-              exact
-              path="/info"
-              component={InfoPage}
-            />
             <ProtectedRoute
               exact
               path="/map"

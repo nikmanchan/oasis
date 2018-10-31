@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         res.send(results.rows);
     })
     .catch(error => {
-        console.log('ERROR',error);
+        console.log('ERROR with GET restaurants:',error);
         res.sendStatus(500);
     })
 });
@@ -30,6 +30,17 @@ router.post('/', (req, res) => {
         res.sendStatus(201);
     }).catch(error => {
         console.log('Error with restaurant POST to database: ', error);
+    })
+});
+
+router.get('/:id', (req, res) => {
+    const query = `SELECT * FROM "restaurant" WHERE id=$1;`
+    pool.query(query, [req.params.id])
+    .then(results => {
+        res.send(results.rows);
+    })
+    .catch(error => {
+        console.log('Error with GET restaurant detail:', error);
     })
 });
 
