@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     const query = `
-    SELECT restaurants.name, restaurants.address, restaurants.menu_url, restaurants.image_url,
+    SELECT restaurants.name, restaurants.restaurant_id, restaurants.address, restaurants.menu_url, restaurants.image_url,
     ratings.friendliness, ratings,costliness, ratings.comments
     FROM "ratings"
     INNER JOIN restaurants ON ratings.restaurant_id = restaurants.restaurant_id

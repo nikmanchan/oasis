@@ -6,12 +6,36 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router-dom';
 
 class RestaurantDetail extends Component {
-    // componentDidMount() {
-    //     this.props.dispatch({type: 'GET_RESTAURANTS' });
+  
+  state = {
+      restaurant_id: 0,
+  }
+
+  componentDidMount() {
+      this.setState({
+        restaurant_id: this.props.state.restaurantDetails.restaurant_id,
+      })
+      console.log(this.state);
+      
+  }
+
+  handleAddRatingClick = (restaurant_id) => {
+
+    this.setState({
+        restaurant_id: restaurant_id,
+    })
+
+    console.log('add rating has been clicked!', restaurant_id);
+    this.props.dispatch({type: 'SET_RATING_ID', payload: {
+        restaurant_id
+        }
+    })
+    this.props.history.push('/rating')
     
-    //   }
+  }
 
   render() {
     const styles = {
@@ -26,21 +50,35 @@ class RestaurantDetail extends Component {
     return (
         <div>
             <h2>Restaurant Details</h2>
-            {this.props.state.restaurants.map(restaurant => 
-            <Card style={styles.card} key={restaurant.id}>
-                <CardMedia
-                    image={restaurant.image_url}
-                    title={restaurant.name}
-                    style={styles.media}
-                />
-            <CardContent>
-                <h3>{restaurant.name}</h3>
-                <p>{restaurant.address}</p>
-                <a href={restaurant.menu_url}>Menu</a>
+            <div>
+                {this.props.state.restaurantDetails.map(restaurant => 
+                <Card style={styles.card} key={restaurant.restaurant_id}>
+                    <CardMedia
+                        image={restaurant.image_url}
+                        title={restaurant.name}
+                        style={styles.media}
+                    />
+                <CardContent>
+                    <h3>{restaurant.name}</h3>
+                    <p>{restaurant.address}</p>
+                    <a href={restaurant.menu_url}>Menu</a>
+                </CardContent>
+                </Card>
+                )}
+            </div>
 
-            </CardContent>
-            </Card>
-            )}
+            <div>
+                <h2>Ratings</h2>
+
+                {this.props.state.restaurantDetails.map(restaurant => 
+                <ul key={restaurant.restaurant_id}>
+                    <li>friendliness rating: {restaurant.friendliness}</li>
+                    <li>costliness rating: {restaurant.costliness}</li>
+                    <li>comments: {restaurant.comments}</li>
+                    <Button onClick={() => this.handleAddRatingClick(restaurant.restaurant_id)}>Add Rating</Button>
+                </ul>
+                )}
+            </div>
 
       </div>
     );
@@ -51,5 +89,4 @@ const mapStateToProps = state => ({
     state: state,
   });
 
-export default connect(mapStateToProps)(RestaurantDetail);
-
+export default withRouter(connect(mapStateToProps)(RestaurantDetail));

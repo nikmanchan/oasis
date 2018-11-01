@@ -4,7 +4,7 @@ import { put, takeLatest, call } from 'redux-saga/effects';
 function* getRestaurantDetail(action) {
     try {
       const details = yield axios.get(`/api/restaurant/${action.payload}`)
-      yield put({ type: 'SET_RESTAURANTS', payload: details.data });
+      yield put({ type: 'SET_RESTAURANT_DETAILS', payload: details.data });
       
     } catch (error) {
       console.log('error getting address:', error);

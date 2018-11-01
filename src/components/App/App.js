@@ -20,6 +20,7 @@ import AddRestaurant from '../AddRestaurant/AddRestaurant';
 import RestaurantDetail from '../RestaurantDetail/RestaurantDetail';
 
 import './App.css';
+import AddRating from '../AddRating/AddRating';
 
 class App extends Component {
   componentDidMount () {
@@ -66,6 +67,11 @@ class App extends Component {
               exact
               path="/detail"
               component={RestaurantDetail}
+            />
+            <ProtectedRoute
+              exact
+              path="/rating"
+              component={AddRating}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

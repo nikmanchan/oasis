@@ -116,8 +116,8 @@ class AddRestaurant extends Component {
   }
 }
 
-const mapStateToProps = reduxState => ({
-  reduxState,
+const mapStateToProps = state => ({
+  state: state,
 });
 
 export default connect(mapStateToProps)(AddRestaurant);

@@ -1,6 +1,6 @@
-const restaurantDetail = (state = {}, action) => {
+const restaurantDetails = (state = [], action) => {
     switch (action.type) {
-      case 'SET_RESTAURANT_DETAIL':
+      case 'SET_RESTAURANT_DETAILS':
         return action.payload;
       default:
         return state;
@@ -8,5 +8,5 @@ const restaurantDetail = (state = {}, action) => {
   };
 
 // restaurant details will be on the redux state at:
-// state.restaurantDetail
-  export default restaurantDetail;
+// state.restaurantDetails
+  export default restaurantDetails;
