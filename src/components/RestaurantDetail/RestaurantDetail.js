@@ -36,18 +36,7 @@ class RestaurantDetail extends Component {
             <CardContent>
                 <h3>{restaurant.name}</h3>
                 <p>{restaurant.address}</p>
-
-                <p>
-                    friendliness rating: {restaurant.friendliness}
-                </p>
-
-                <p>
-                    costliness rating:{restaurant.costliness}
-                </p>
-                
-                <p>comments: 
-                <br></br>
-                {restaurant.comments}</p>
+                <a href={restaurant.menu_url}>Menu</a>
 
             </CardContent>
             </Card>

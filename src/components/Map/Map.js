@@ -1,4 +1,5 @@
 import React from 'react';
+import './Map.css'
 import { connect } from 'react-redux';
 import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
 import { SearchBox } from 'react-google-maps/lib/components/places/SearchBox';
@@ -108,9 +109,9 @@ class Map extends React.Component {
           </SearchBox>
 
           {/*  Display Markers with InfoWindows */}
-          {this.props.state.restaurants.map(restaurant => <RestaurantMarker key={restaurant.id}
+          {this.props.state.restaurants.map(restaurant => <RestaurantMarker key={restaurant.restaurant_id}
             position={{ lat: Number(restaurant.latitude), lng: Number(restaurant.longitude) }}
-            name={restaurant.name} id={restaurant.id}
+            name={restaurant.name} id={restaurant.restaurant_id} 
           />)}
 
           {/* End Markers Display */}

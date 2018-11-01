@@ -6,7 +6,7 @@ const router = express.Router();
  * Get all of the restaurants
  */
 router.get('/', (req, res) => {
-    const query = `SELECT * FROM "restaurant";`
+    const query = `SELECT * FROM "restaurants";`
     pool.query(query)
     .then(results => {
         res.send(results.rows);
@@ -34,7 +34,12 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    const query = `SELECT * FROM "restaurant" WHERE id=$1;`
+    const query = `
+    SELECT restaurants.name, restaurants.address, restaurants.menu_url, restaurants.image_url,
+    ratings.friendliness, ratings,costliness, ratings.comments
+    FROM "ratings"
+    INNER JOIN restaurants ON ratings.restaurant_id = restaurants.restaurant_id
+    WHERE restaurants.restaurant_id = $1;`
     pool.query(query, [req.params.id])
     .then(results => {
         res.send(results.rows);
