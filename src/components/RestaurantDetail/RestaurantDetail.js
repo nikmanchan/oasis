@@ -9,18 +9,7 @@ import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router-dom';
 
 class RestaurantDetail extends Component {
-  
-  state = {
-      restaurant_id: 0,
-  }
 
-  componentDidMount() {
-      this.setState({
-        restaurant_id: this.props.state.restaurantDetails.restaurant_id,
-      })
-      console.log(this.state);
-      
-  }
 
   handleAddRatingClick = (restaurant_id) => {
 
@@ -51,20 +40,23 @@ class RestaurantDetail extends Component {
         <div>
             <h2>Restaurant Details</h2>
             <div>
-                {this.props.state.restaurantDetails.map(restaurant => 
-                <Card style={styles.card} key={restaurant.restaurant_id}>
+                {/* {this.props.state.restaurantDetails.map((restaurant, index ) =>  */}
+                {/* Show loading card if restaurantDetailsreducer is not fired */}
+                {!this.props.state.restaurantDetails[0] ? <p>loading...</p> :
+                <Card style={styles.card}>
                     <CardMedia
-                        image={restaurant.image_url}
-                        title={restaurant.name}
+                        image={this.props.state.restaurantDetails[0].image_url}
+                        title={this.props.state.restaurantDetails[0].name}
                         style={styles.media}
                     />
                 <CardContent>
-                    <h3>{restaurant.name}</h3>
-                    <p>{restaurant.address}</p>
-                    <a href={restaurant.menu_url}>Menu</a>
+                    <h3>{this.props.state.restaurantDetails[0].name}</h3>
+                    <p>{this.props.state.restaurantDetails[0].address}</p>
+                    <a href={this.props.state.restaurantDetails[0].menu_url}>Menu</a>
                 </CardContent>
                 </Card>
-                )}
+                }
+                {/* )} */}
             </div>
 
             <div>

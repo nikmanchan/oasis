@@ -33,6 +33,7 @@ router.post('/', (req, res) => {
     })
 });
 
+
 router.get('/:id', (req, res) => {
     const query = `
     SELECT restaurants.name, restaurants.restaurant_id, restaurants.address, restaurants.menu_url, restaurants.image_url,
@@ -46,6 +47,26 @@ router.get('/:id', (req, res) => {
     })
     .catch(error => {
         console.log('Error with GET restaurant detail:', error);
+    })
+});
+
+/**
+ * POST ratings to Database
+ */
+
+router.post('/rating', (req, res) => {
+    console.log('POSTING RATING TO SERVER!');
+    console.log(req.body.restaurant_id);
+    
+    const query = `INSERT INTO "ratings" ("friendliness", "costliness", "comments", "restaurant_id")
+    VALUES($1, $2, $3, $4);`;
+    pool.query(query, [req.body.friendliness, req.body.costliness, req.body.comments,
+        req.body.restaurant_id,]).then(() => {
+        console.log('SUCCESS ADDING RATING');
+        
+        res.sendStatus(201);
+    }).catch(error => {
+        console.log('Error with restaurant POST to database: ', error);
     })
 });
 

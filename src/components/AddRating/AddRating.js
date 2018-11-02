@@ -9,6 +9,13 @@ class AddRating extends Component {
     friendliness: 0,
     costliness: 0,
     comments: '',
+    restaurant_id: 1,
+  }
+
+  componentDidMount() {
+    this.setState({
+        restaurant_id: this.props.state.restaurantDetails[0].restaurant_id,
+    })
   }
 
   handleSubmit = (event) => {
@@ -16,13 +23,15 @@ class AddRating extends Component {
     
     // let id = this.props.reduxState.restaurantDetails.restaurant_id;
 
-    this.setState({
-        restaurant_id: this.props.state.restaurantDetails.restaurant_id,
-    })
+    // this.setState({
+    //     restaurant_id: this.props.state.restaurantDetails[0].restaurant_id,
+    // })
 
+    console.log('this is the RESTAURANT ID:', this.props.state.restaurantDetails[0].restaurant_id);
+    
     // Send ratings to redux state
     this.props.dispatch({
-        type: 'ADD_RATINGS',
+        type: 'ADD_RATING',
         payload: this.state
     })
     
@@ -32,8 +41,9 @@ class AddRating extends Component {
     //     costliness: 0,
     //     comments: '',
     // })
+    console.log(this.state);
     
-    alert('Your rating has been added!');
+    alert('Your rating has been added!', this.state);
 
     // this.props.history.push('/detail');
 
@@ -77,7 +87,7 @@ class AddRating extends Component {
           </p>
 
           <div>
-            <textarea divlaceholder="comments" value={this.state.comments} onChange={this.handleChange('comments')}></textarea>
+            <textarea placeholder="comments" value={this.state.comments} onChange={this.handleChange('comments')}></textarea>
           </div>
           <input type="submit"></input>
       </form>

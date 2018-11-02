@@ -20,6 +20,7 @@ class RestaurantMarker extends Component {
 
     handleMoreDetailsClick = (id) => {
             let restaurant_id = id;
+            console.log('this is the id:', id)
             this.props.dispatch({
                 type: 'GET_RESTAURANT_DETAIL',
                 payload: restaurant_id

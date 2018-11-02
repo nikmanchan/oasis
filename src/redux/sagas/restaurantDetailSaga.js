@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest, call } from 'redux-saga/effects';
+import { put, takeLatest, } from 'redux-saga/effects';
 // worker Saga: will be fired on "GET_RESTAURANT_DETAIL" actions
 function* getRestaurantDetail(action) {
     try {
