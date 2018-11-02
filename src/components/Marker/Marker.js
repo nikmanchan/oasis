@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 // import google maps api for Marker and InfoWindow
 import { Marker, InfoWindow } from 'react-google-maps';
-/* global google */
+
 
 
 class RestaurantMarker extends Component {
@@ -46,7 +46,9 @@ class RestaurantMarker extends Component {
             <div>
                 {this.props.name}
                 <br></br>
-                <Button onClick={() => this.handleMoreDetailsClick(this.props.id)}>More Details</Button>
+                {this.props.address}
+                <br></br>
+                <Button variant="containted" onClick={() => this.handleMoreDetailsClick(this.props.id)}>More Details</Button>
             </div>    
         </InfoWindow> }
         {/* End InfoWindow */}

@@ -111,7 +111,7 @@ class Map extends React.Component {
           {/*  Display Markers with InfoWindows */}
           {this.props.state.restaurants.map(restaurant => <RestaurantMarker key={restaurant.restaurant_id}
             position={{ lat: Number(restaurant.latitude), lng: Number(restaurant.longitude) }}
-            name={restaurant.name} id={restaurant.restaurant_id} 
+            name={restaurant.name} id={restaurant.restaurant_id} address={restaurant.address}
           />)}
 
           {/* End Markers Display */}
