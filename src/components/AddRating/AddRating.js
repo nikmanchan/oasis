@@ -24,9 +24,9 @@ class AddRating extends Component {
     
     // let id = this.props.reduxState.restaurantDetails.restaurant_id;
 
-    // this.setState({
-    //     restaurant_id: this.props.state.restaurantDetails[0].restaurant_id,
-    // })
+    this.setState({
+        restaurant_id: this.props.state.restaurantDetails[0].restaurant_id,
+    })
 
     console.log('this is the RESTAURANT ID:', this.props.state.restaurantDetails[0].restaurant_id);
     
@@ -36,17 +36,21 @@ class AddRating extends Component {
         payload: this.state
     })
     
+    this.props.dispatch({
+        type: 'GET_RESTAURANT_DETAIL', payload:this.state.restaurant_id
+    }); 
+
     // Clear input form
-    // this.setState({
-    //     friendliness: 0,
-    //     costliness: 0,
-    //     comments: '',
-    // })
+    this.setState({
+        friendliness: 0,
+        costliness: 0,
+        comments: '',
+    })
     console.log(this.state);
     
     alert('Your rating has been added!', this.state);
 
-    // this.props.history.push('/detail');
+    this.props.history.push('/map');
 
   } // End handleSubmit
 

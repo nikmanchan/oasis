@@ -10,11 +10,8 @@ class AddRestaurant extends Component {
   state={
     name: '',
     address: '',
-    restriction: '',
-    friendliness: 0,
-    costliness: 0,
-    comments: '',
     image_url: '',
+    menu_url: '',
     latitude: '',
     longitude: '',
   }
@@ -44,11 +41,8 @@ class AddRestaurant extends Component {
         this.setState({
           name: '',
           address: '',
-          restriction: '',
-          friendliness: 0,
-          costliness: 0,
-          comments: '',
           image_url: '',
+          menu_url: '',
           latitude: '',
           longitude: '',
         })
@@ -75,40 +69,10 @@ class AddRestaurant extends Component {
       
       <form onSubmit={this.handleSubmit}>
           <input placeholder="name" value={this.state.name} onChange={this.handleChange('name')} ></input>
-          <br></br>
           <input placeholder="address" value={this.state.address} onChange={this.handleChange('address')}></input>
-      
-          <p>restriction:
-            <select value={this.state.restriction} onChange={this.handleChange('restriction')}>
-              <option value="vegetarian">vegetarian</option>
-              <option value="vegan">vegan</option>
-            </select>
-          </p>
-
-          <p>friendliness rating:
-            <select onChange={this.handleChange('friendliness')} value={this.state.friendliness}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </p>
-
-          <p>costliness rating:
-            <select value={this.state.costliness} onChange={this.handleChange('costliness')}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </p>
-
-          <div>
-            <textarea divlaceholder="comments" value={this.state.comments} onChange={this.handleChange('comments')}></textarea>
-          </div>
           <input placeholder="image_url" value={this.state.image_url} onChange={this.handleChange('image_url')}></input>
+          <input placeholder="menu_url" value={this.state.menu_url} onChange={this.handleChange('menu_url')}></input>
+          <br></br>
           <input type="submit"></input>
       </form>
     </div>

@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router-dom';
+import './RestaurantDetail.css';
 
 class RestaurantDetail extends Component {
 
@@ -22,6 +23,11 @@ class RestaurantDetail extends Component {
         restaurant_id
         }
     })
+
+    this.props.dispatch({
+        type: 'GET_RESTAURANT_DETAIL',
+    }); 
+
     this.props.history.push('/rating')
     
   }
@@ -29,7 +35,7 @@ class RestaurantDetail extends Component {
   render() {
     const styles = {
         card: {
-            width:30+'vw'
+            width:35+'vw'
         },
         media: {
             height: 300,
@@ -39,7 +45,7 @@ class RestaurantDetail extends Component {
     return (
         <div>
             <h2>Restaurant Details</h2>
-            <div>
+            <div className="details">
                 {/* {this.props.state.restaurantDetails.map((restaurant, index ) =>  */}
                 {/* Show loading card if restaurantDetailsreducer is not fired */}
                 {!this.props.state.restaurantDetails[0] ? <p>loading...</p> :
@@ -52,14 +58,11 @@ class RestaurantDetail extends Component {
                 <CardContent>
                     <h3>{this.props.state.restaurantDetails[0].name}</h3>
                     <p>{this.props.state.restaurantDetails[0].address}</p>
-                    <a href={this.props.state.restaurantDetails[0].menu_url}>Menu</a>
+                    <a href={this.props.state.restaurantDetails[0].menu_url} target="_blank">Menu</a>
                 </CardContent>
                 </Card>
                 }
-                {/* )} */}
-            </div>
-
-            <div>
+            <div class="ratings">
                 <h2>Ratings</h2>
 
                 {this.props.state.restaurantDetails.map(restaurant => 
@@ -67,10 +70,13 @@ class RestaurantDetail extends Component {
                     <li>friendliness rating: {restaurant.friendliness}</li>
                     <li>costliness rating: {restaurant.costliness}</li>
                     <li>comments: {restaurant.comments}</li>
-                    <Button onClick={() => this.handleAddRatingClick(restaurant.restaurant_id)}>Add Rating</Button>
                 </ul>
                 )}
+                <Button onClick={() => this.handleAddRatingClick(this.props.state.restaurantDetails[0].restaurant_id)}>Add Rating</Button>
             </div>
+                
+            </div>
+
 
       </div>
     );

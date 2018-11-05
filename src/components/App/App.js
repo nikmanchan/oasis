@@ -42,6 +42,11 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
+            <Route
+              exact
+              path="/map"
+              component={MapPage}
+            />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -53,22 +58,22 @@ class App extends Component {
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path="/map"
               component={MapPage}
-            />
+            /> */}
             <ProtectedRoute
               exact
               path="/add"
               component={AddRestaurant}
             />
-            <ProtectedRoute
+            <Route
               exact
               path="/detail"
               component={RestaurantDetail}
             />
-            <ProtectedRoute
+            <Route
               exact
               path="/rating"
               component={AddRating}

@@ -1,0 +1,10 @@
+.ratings {
+    /* float: right; */
+    /* width: 50%; */
+    display: inline;
+}
+.details {
+    /* float: left; */
+    
+    display: inline;
+}

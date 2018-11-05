@@ -48,7 +48,9 @@ class RestaurantMarker extends Component {
                 <br></br>
                 {this.props.address}
                 <br></br>
-                <Button variant="containted" onClick={() => this.handleMoreDetailsClick(this.props.id)}>More Details</Button>
+                <a href={`https://www.google.com/maps/dir/?api=1&destination=${this.props.address}`} target="_blank">Get Directions</a>
+                <br></br>
+                <Button onClick={() => this.handleMoreDetailsClick(this.props.id)}>More Details</Button>
             </div>    
         </InfoWindow> }
         {/* End InfoWindow */}

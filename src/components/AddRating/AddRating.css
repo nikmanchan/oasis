@@ -1,3 +1,7 @@
 .ratings {
-    display: inline-block;
+    float: right;
+}
+
+.details {
+    float: left;
 }
