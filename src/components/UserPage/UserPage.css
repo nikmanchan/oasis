@@ -1,0 +1,19 @@
+body {
+    background-image: url("https://cdn1.epicgames.com/ue/item/DesertOasis_screenshot01-1920x1080-7c8f892f5d199624e8c3896cfd36924a.png");
+    background-size: cover;
+}
+
+.UserHeader {
+    color: white;
+    text-align: center;
+}
+
+.UserButton {
+    color: white;
+    text-align: center;
+}
+
+.UserPage {
+    padding-top: 15%;
+    text-align: center;
+}

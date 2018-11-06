@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+import { Button, Card, CardImg, CardText, CardBody, CardLink,
+    CardTitle, CardSubtitle } from 'reactstrap';
+// import Card from '@material-ui/core/Card';
+// import CardContent from '@material-ui/core/CardContent';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import Button from '@material-ui/core/Button';
+// import { Button } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import './RestaurantDetail.css';
 
@@ -44,24 +45,24 @@ class RestaurantDetail extends Component {
     };
     return (
         <div>
-            <h2>Restaurant Details</h2>
             <div className="details">
+            <h2>Restaurant Details</h2>
                 {/* {this.props.state.restaurantDetails.map((restaurant, index ) =>  */}
                 {/* Show loading card if restaurantDetailsreducer is not fired */}
                 {!this.props.state.restaurantDetails[0] ? <p>loading...</p> :
                 <Card style={styles.card}>
-                    <CardMedia
-                        image={this.props.state.restaurantDetails[0].image_url}
-                        title={this.props.state.restaurantDetails[0].name}
-                        style={styles.media}
-                    />
-                <CardContent>
-                    <h3>{this.props.state.restaurantDetails[0].name}</h3>
-                    <p>{this.props.state.restaurantDetails[0].address}</p>
-                    <a href={this.props.state.restaurantDetails[0].menu_url} target="_blank">Menu</a>
-                </CardContent>
+                    <img height="300px" src={this.props.state.restaurantDetails[0].image_url} />
+                        
+                    <CardBody>
+                        <h3>{this.props.state.restaurantDetails[0].name}</h3>
+                        <p>{this.props.state.restaurantDetails[0].address}</p>
+                        <a href={this.props.state.restaurantDetails[0].menu_url} target="_blank">Menu</a>
+                    </CardBody>
                 </Card>
                 }
+                
+                
+            </div>
             <div class="ratings">
                 <h2>Ratings</h2>
 
@@ -72,9 +73,8 @@ class RestaurantDetail extends Component {
                     <li>comments: {restaurant.comments}</li>
                 </ul>
                 )}
-                <Button onClick={() => this.handleAddRatingClick(this.props.state.restaurantDetails[0].restaurant_id)}>Add Rating</Button>
-            </div>
                 
+                <Button color="secondary" onClick={() => this.handleAddRatingClick(this.props.state.restaurantDetails[0].restaurant_id)}>Add Rating</Button>
             </div>
 
 

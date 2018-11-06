@@ -1,10 +1,17 @@
 .ratings {
-    /* float: right; */
-    /* width: 50%; */
-    display: inline;
+    padding-top: 3.5%;
+    float: left;
+    width: 40%;
+    color: white;
+    padding-left: 15%;
 }
 .details {
-    /* float: left; */
-    
-    display: inline;
+    padding-top: 2.5%;
+    float: left;
+    width: 40%;
+    padding-left: 10%;
+}
+
+h2 {
+    color: white;
 }

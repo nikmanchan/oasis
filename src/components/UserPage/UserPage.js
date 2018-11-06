@@ -1,17 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import { Button, Card, CardImg, CardText, CardBody, CardLink,
+  CardTitle, CardSubtitle } from 'reactstrap';
+import './UserPage.css'
+import { withRouter } from 'react-router-dom';
+
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
+function handleClick  () {
+
+  this.props.history.push('/map')
+  
+}
 const UserPage = (props) => (
-  <div>
-    <h1 id="welcome">
-      Welcome, { props.user.username }!
-    </h1>
-    <p>Your ID is: {props.user.id}</p>
-    <LogOutButton className="log-in" />
+  <div className="UserPage">
+    <h1 className="UserHeader">Your search is now over.</h1>
+    <Button onClick={handleClick} className="UserButton">Let's get started</Button>
   </div>
 );
 
@@ -23,4 +30,6 @@ const mapStateToProps = state => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+// export default connect(mapStateToProps)(UserPage);
+export default withRouter(connect(mapStateToProps)(UserPage));
+

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router-dom';
-import './AddRating'
+import './AddRating.css'
+import Select from 'react-select';
+// import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class AddRating extends Component {
 
@@ -11,6 +14,16 @@ class AddRating extends Component {
     costliness: 0,
     comments: '',
     restaurant_id: 1,
+    dropdownOpen: false,
+    
+  }
+
+//   this.onChange = this.onChange.bind(this)
+
+  toggle(){
+    this.setState({
+      dropdownOpen: !this.dropdownOpen
+    });
   }
 
   componentDidMount() {
@@ -64,38 +77,74 @@ class AddRating extends Component {
   render() {
       
     return (
-      <div>
+      <div className="addRating">
       <h2>
         Add Ratings
       </h2>
       
-      <form onSubmit={this.handleSubmit}>
+      {/* <Form onSubmit={this.handleSubmit}>
+      <FormGroup>
+          <Label for="friendlinessRating">Friendliness Rating</Label>
+          <Input type="select" name="select" 
+        //   onChange={this.state.handleChange('friendliness')} 
+          value={this.state.friendliness}id="friendlinessRating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </Input>
+        </FormGroup>
+      <FormGroup>
+          <Label for="costlinessRating">Costliness Rating</Label>
+          <Input type="select" name="select" 
+          onChange={this.state.handleChange('costliness')} 
+          value={this.state.costliness}id="costlinessRating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </Input>
+        </FormGroup>
 
-          <p>friendliness rating:
+        <FormGroup>
+          <Label for="comments">Comments</Label>
+          <Input type="textarea" name="text" value={this.state.comments} 
+          onChange={this.state.handleChange('comments')} id="comments" 
+          />
+        </FormGroup> */}
+
+
+          <div> 
             <select onChange={this.handleChange('friendliness')} value={this.state.friendliness}>
+              <option value="friendliness">friendliness rating</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-          </p>
+          </div>
 
-          <p>costliness rating:
+          <div>
             <select value={this.state.costliness} onChange={this.handleChange('costliness')}>
+              <option value="costliness">costliness rating</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-          </p>
+          </div>
 
           <div>
             <textarea placeholder="comments" value={this.state.comments} onChange={this.handleChange('comments')}></textarea>
-          </div>
-          <input type="submit"></input>
-      </form>
+          </div> 
+          {/* <input type="submit"></input> */}
+
+            <Button onClick={this.handleSubmit}>Submit</Button>
+      {/* </Form> */}
     </div>
     );
   }

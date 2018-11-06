@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Geocode from "react-geocode";
+import { InputGroup, InputGroupAddon, InputGroupText, Input, Button } from 'reactstrap';
 
 
 Geocode.setApiKey("AIzaSyCZv9A4Vtnra6r04z9JnNk91zeXwX82O68");
@@ -62,18 +63,20 @@ class AddRestaurant extends Component {
 
   render() {
     return (
-      <div>
-      <h2>
-        Add Restaurant
-      </h2>
+      <div className="addRestaurant">
       
       <form onSubmit={this.handleSubmit}>
-          <input placeholder="name" value={this.state.name} onChange={this.handleChange('name')} ></input>
-          <input placeholder="address" value={this.state.address} onChange={this.handleChange('address')}></input>
-          <input placeholder="image_url" value={this.state.image_url} onChange={this.handleChange('image_url')}></input>
-          <input placeholder="menu_url" value={this.state.menu_url} onChange={this.handleChange('menu_url')}></input>
+          <h4 className="addHeader">
+            Add Restaurant
+          </h4>
+          <div>
+          <Input placeholder="name" value={this.state.name} onChange={this.handleChange('name')} ></Input>
+          <Input placeholder="address" value={this.state.address} onChange={this.handleChange('address')}></Input>
+          <Input placeholder="image_url" value={this.state.image_url} onChange={this.handleChange('image_url')}></Input>
+          <Input placeholder="menu_url" value={this.state.menu_url} onChange={this.handleChange('menu_url')}></Input>
           <br></br>
-          <input type="submit"></input>
+          <Button className="submit" onSubmit={this.handleSubmit} type="submit">Submit</Button>
+          </div>
       </form>
     </div>
     );

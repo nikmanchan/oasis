@@ -1,7 +1,13 @@
-.ratings {
-    float: right;
+body {
+    text-align: center;
 }
 
-.details {
-    float: left;
+form {
+    background-color: white;
+    height: 300px;
+    text-align: center;
+}
+
+.addRating {
+    text-align: center;
 }

@@ -23,7 +23,7 @@ class RestaurantMarker extends Component {
             console.log('this is the id:', id)
             this.props.dispatch({
                 type: 'GET_RESTAURANT_DETAIL',
-                payload: restaurant_id
+                payload: Number(restaurant_id)
             }); 
             
             this.props.history.push('/detail');
