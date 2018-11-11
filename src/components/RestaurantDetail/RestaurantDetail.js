@@ -57,6 +57,8 @@ class RestaurantDetail extends Component {
                         <h3>{this.props.state.restaurantDetails[0].name}</h3>
                         <p>{this.props.state.restaurantDetails[0].address}</p>
                         <a href={this.props.state.restaurantDetails[0].menu_url} target="_blank">Menu</a>
+                        <br></br>
+                        <a href={`https://www.google.com/maps/dir/?api=1&destination=${this.props.state.restaurantDetails[0].address}`} target="_blank">Get Directions</a>
                     </CardBody>
                 </Card>
                 }
