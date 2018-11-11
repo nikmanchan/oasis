@@ -1,9 +1,10 @@
 .ratings {
-    padding-top: 3.5%;
+    padding-top: 2.5%;
     float: left;
     width: 40%;
     color: white;
-    padding-left: 15%;
+    padding-left: 17%;
+    height: 542px;
 }
 .details {
     padding-top: 2.5%;
@@ -14,4 +15,9 @@
 
 h2 {
     color: white;
+}
+
+.ratingsList {
+    height: 460px;
+    overflow-y: scroll;
 }

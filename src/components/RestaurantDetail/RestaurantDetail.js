@@ -56,9 +56,11 @@ class RestaurantDetail extends Component {
                     <CardBody>
                         <h3>{this.props.state.restaurantDetails[0].name}</h3>
                         <p>{this.props.state.restaurantDetails[0].address}</p>
+                        <p>
                         <a href={this.props.state.restaurantDetails[0].menu_url} target="_blank">Menu</a>
-                        <br></br>
+                        &ensp;
                         <a href={`https://www.google.com/maps/dir/?api=1&destination=${this.props.state.restaurantDetails[0].address}`} target="_blank">Get Directions</a>
+                        </p>
                     </CardBody>
                 </Card>
                 }
@@ -67,15 +69,17 @@ class RestaurantDetail extends Component {
             </div>
             <div class="ratings">
                 <h2>Ratings</h2>
-
-                {this.props.state.restaurantDetails.map(restaurant => 
-                <ul key={restaurant.restaurant_id}>
-                    <li>friendliness rating: {restaurant.friendliness}</li>
-                    <li>costliness rating: {restaurant.costliness}</li>
-                    <li>comments: {restaurant.comments}</li>
-                </ul>
-                )}
-                
+                <div className="ratingsList">
+                    {this.props.state.restaurantDetails.map(restaurant => 
+                    <ul key={restaurant.restaurant_id}>
+                        <li>friendliness rating: {restaurant.friendliness}</li>
+                        <li>costliness rating: {restaurant.costliness}</li>
+                        <li>comments: 
+                        <br></br>
+                        {restaurant.comments}</li>
+                    </ul>
+                    )}
+                </div>
                 <Button color="secondary" onClick={() => this.handleAddRatingClick(this.props.state.restaurantDetails[0].restaurant_id)}>Add Rating</Button>
             </div>
 
