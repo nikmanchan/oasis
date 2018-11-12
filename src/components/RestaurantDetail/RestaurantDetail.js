@@ -72,7 +72,7 @@ class RestaurantDetail extends Component {
                 <h2 className="ratingsHeader">
                     Ratings 
                     &emsp;&emsp;&emsp;
-                    <Button color="secondary" onClick={() => this.handleAddRatingClick(this.props.state.restaurantDetails[0].restaurant_id)}>Add Rating</Button>
+                    <Button color="success" onClick={() => this.handleAddRatingClick(this.props.state.restaurantDetails[0].restaurant_id)}>Add Rating</Button>
                 </h2>
 
                 <div className="ratingsList">
