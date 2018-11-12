@@ -9,18 +9,18 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class AddRating extends Component {
 
-  state={
+  state = {
     friendliness: 0,
     costliness: 0,
     comments: '',
     restaurant_id: 1,
     dropdownOpen: false,
-    
+
   }
 
-//   this.onChange = this.onChange.bind(this)
+  //   this.onChange = this.onChange.bind(this)
 
-  toggle(){
+  toggle() {
     this.setState({
       dropdownOpen: !this.dropdownOpen
     });
@@ -28,39 +28,39 @@ class AddRating extends Component {
 
   componentDidMount() {
     this.setState({
-        restaurant_id: this.props.state.restaurantDetails[0].restaurant_id,
+      restaurant_id: this.props.state.restaurantDetails[0].restaurant_id,
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    
+
     // let id = this.props.reduxState.restaurantDetails.restaurant_id;
 
     this.setState({
-        restaurant_id: this.props.state.restaurantDetails[0].restaurant_id,
+      restaurant_id: this.props.state.restaurantDetails[0].restaurant_id,
     })
 
     console.log('this is the RESTAURANT ID:', this.props.state.restaurantDetails[0].restaurant_id);
-    
+
     // Send ratings to redux state
     this.props.dispatch({
-        type: 'ADD_RATING',
-        payload: this.state
+      type: 'ADD_RATING',
+      payload: this.state
     })
-    
+
     this.props.dispatch({
-        type: 'GET_RESTAURANT_DETAIL', payload:this.state.restaurant_id
-    }); 
+      type: 'GET_RESTAURANT_DETAIL', payload: this.state.restaurant_id
+    });
 
     // Clear input form
     this.setState({
-        friendliness: 0,
-        costliness: 0,
-        comments: '',
+      friendliness: 0,
+      costliness: 0,
+      comments: '',
     })
     console.log(this.state);
-    
+
     alert('Your rating has been added!', this.state);
 
     this.props.history.push('/map');
@@ -69,54 +69,52 @@ class AddRating extends Component {
 
   handleChange = (property) => (event) => {
     this.setState({
-        ...this.state,
-        [property]: event.target.value
+      ...this.state,
+      [property]: event.target.value
     })
-}
+  }
 
   render() {
-      
+
     return (
       <div className="addRating">
-      <h2>
-        Add Ratings
-      </h2>
-      
-      {/* <Form onSubmit={this.handleSubmit}>
-      <FormGroup>
-          <Label for="friendlinessRating">Friendliness Rating</Label>
-          <Input type="select" name="select" 
-        //   onChange={this.state.handleChange('friendliness')} 
-          value={this.state.friendliness}id="friendlinessRating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </Input>
-        </FormGroup>
-      <FormGroup>
-          <Label for="costlinessRating">Costliness Rating</Label>
-          <Input type="select" name="select" 
-          onChange={this.state.handleChange('costliness')} 
-          value={this.state.costliness}id="costlinessRating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </Input>
-        </FormGroup>
 
-        <FormGroup>
-          <Label for="comments">Comments</Label>
-          <Input type="textarea" name="text" value={this.state.comments} 
-          onChange={this.state.handleChange('comments')} id="comments" 
-          />
-        </FormGroup> */}
+        <Form onSubmit={this.handleSubmit} className="ratingsForm">
+          <h2>Add Ratings</h2>
+          <FormGroup>
+            <Label for="friendlinessRating">Friendliness Rating</Label>
+            <Input type="select" name="select"
+              onChange={this.handleChange('friendliness')}
+              value={this.state.friendliness} id="friendlinessRating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </Input>
+          </FormGroup>
+          <FormGroup>
+            <Label for="costlinessRating">Costliness Rating</Label>
+            <Input type="select" name="select"
+              onChange={this.handleChange('costliness')}
+              value={this.state.costliness} id="costlinessRating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </Input>
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="comments">Comments</Label>
+            <Input type="textarea" name="text" value={this.state.comments}
+              onChange={this.handleChange('comments')} id="comments"
+            />
+          </FormGroup>
 
 
-          <div> 
+          {/* <div>
             <select onChange={this.handleChange('friendliness')} value={this.state.friendliness}>
               <option value="friendliness">friendliness rating</option>
               <option value="1">1</option>
@@ -136,22 +134,22 @@ class AddRating extends Component {
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-          </div>
+          </div> */}
 
-          <div>
+          {/* <div>
             <textarea placeholder="comments" value={this.state.comments} onChange={this.handleChange('comments')}></textarea>
-          </div> 
+          </div> */}
           {/* <input type="submit"></input> */}
 
-            <Button onClick={this.handleSubmit}>Submit</Button>
-      {/* </Form> */}
-    </div>
+          <Button onClick={this.handleSubmit}>Submit</Button>
+        </Form>
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-    state: state,
+  state: state,
 });
 
 export default withRouter(connect(mapStateToProps)(AddRating));
