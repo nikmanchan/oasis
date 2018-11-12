@@ -67,8 +67,14 @@ class RestaurantDetail extends Component {
                 
                 
             </div>
+
             <div class="ratings">
-                <h2>Ratings</h2>
+                <h2 className="ratingsHeader">
+                    Ratings 
+                    &emsp;&emsp;&emsp;
+                    <Button color="secondary" onClick={() => this.handleAddRatingClick(this.props.state.restaurantDetails[0].restaurant_id)}>Add Rating</Button>
+                </h2>
+
                 <div className="ratingsList">
                     {this.props.state.restaurantDetails.map(restaurant => 
                     <ul key={restaurant.restaurant_id}>
@@ -80,10 +86,8 @@ class RestaurantDetail extends Component {
                     </ul>
                     )}
                 </div>
-                <Button color="secondary" onClick={() => this.handleAddRatingClick(this.props.state.restaurantDetails[0].restaurant_id)}>Add Rating</Button>
+
             </div>
-
-
       </div>
     );
   }

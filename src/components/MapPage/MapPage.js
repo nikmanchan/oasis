@@ -30,15 +30,15 @@ class MainMap extends Component {
             onMarkerClick={this.handleMarkerClick}
             handleToggleOpen={this.handleToggleOpen}
             isOpen = {this.state.isOpen}
-
         />
+
       </div>
     );
   }
 }
 
-const mapStateToProps = reduxState => ({
-  reduxState,
-});
+const mapStateToProps = state => ({
+    state: state,
+  });
 
 export default connect(mapStateToProps)(MainMap);

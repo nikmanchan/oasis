@@ -17,6 +17,22 @@ router.get('/', (req, res) => {
     })
 });
 
+
+/**
+ * Get all of the restaurants
+ */
+router.get('/byCity', (req, res) => {
+    const query = `SELECT * FROM "myrestaurants" WHERE "address" LIKE '%$1%';`
+    pool.query(query, req.body.city)
+    .then(results => {
+        res.send(results.rows);
+    })
+    .catch(error => {
+        console.log('ERROR with GET restaurants:',error);
+        res.sendStatus(500);
+    })
+});
+
 /**
  * POST restaurant to Database
  */

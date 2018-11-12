@@ -21,3 +21,7 @@ h2 {
     height: 460px;
     overflow-y: scroll;
 }
+
+.addRatingsButton {
+    padding-left: 30px;
+}
