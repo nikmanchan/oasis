@@ -36,11 +36,11 @@ class RestaurantDetail extends Component {
   render() {
     const styles = {
         card: {
-            width:35+'vw'
+            width:25+'vw'
         },
         media: {
             height: 300,
-            width: 100 + '%'
+            width: 80 + '%'
         },
     };
     return (
