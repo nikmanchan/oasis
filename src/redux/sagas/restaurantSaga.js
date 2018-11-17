@@ -12,6 +12,16 @@ function* getRestaurants(action) {
     }
 }
 
+function* getRestaurantsByCity(action) {
+    try {
+      const restaurants = yield axios.get(`/api/restaurant/city`, action.payload)
+      yield put({ type: 'SET_RESTAURANTS', payload: restaurants.data });
+      
+    } catch (error) {
+      console.log('error getting restaurant by city:', error);
+    }
+}
+
 function* addRestaurant(action) {
       try {
         yield call(axios.post, '/api/restaurant', action.payload);
@@ -23,6 +33,7 @@ function* addRestaurant(action) {
 
 function* restaurantSaga() {
     yield takeLatest('GET_RESTAURANTS', getRestaurants);
+    yield takeLatest('GET_RESTAURANTS_BY_CITY', getRestaurantsByCity);
     yield takeLatest('ADD_RESTAURANT', addRestaurant);
 }
 

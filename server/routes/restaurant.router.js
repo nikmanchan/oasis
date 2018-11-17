@@ -19,11 +19,11 @@ router.get('/', (req, res) => {
 
 
 /**
- * Get all of the restaurants
+ * Get all of the restaurants by city name
  */
-router.get('/byCity', (req, res) => {
+router.get('/city', (req, res) => {
     const query = `SELECT * FROM "myrestaurants" WHERE "address" LIKE '%$1%';`
-    pool.query(query, req.body.city)
+    pool.query(query, req.body)
     .then(results => {
         res.send(results.rows);
     })

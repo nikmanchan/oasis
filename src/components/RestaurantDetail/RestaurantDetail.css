@@ -2,7 +2,6 @@
     padding-top: 2.5%;
     float: left;
     width: 35%;
-    /* color: white; */
     padding-left: 13%;
     height: 542px;
 }
@@ -13,10 +12,6 @@
     padding-left: 20%;
 }
 
-/* h2 {
-    color: white;
-} */
-
 .ratingsList {
     height: 460px;
     overflow-y: scroll;
@@ -26,4 +21,8 @@
 
 .addRatingsButton {
     padding-left: 30px;
+}
+
+.citySelect {
+    float: right;
 }

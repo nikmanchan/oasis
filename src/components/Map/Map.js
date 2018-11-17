@@ -81,8 +81,8 @@ class Map extends React.Component {
       <div>
         <GoogleMap
           ref={this.state.onMapMounted}
-          defaultZoom={14}
-          center={this.state.center}
+          defaultZoom={13}
+          center={this.props.center}
           onBoundsChanged={this.props.onBoundsChanged}>
           <SearchBox
             ref={this.state.onSearchBoxMounted}
