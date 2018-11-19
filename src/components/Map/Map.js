@@ -81,7 +81,7 @@ class Map extends React.Component {
       <div>
         <GoogleMap
           ref={this.state.onMapMounted}
-          defaultZoom={13}
+          defaultZoom={13.5}
           center={this.props.center}
           onBoundsChanged={this.props.onBoundsChanged}>
           <SearchBox
@@ -95,15 +95,16 @@ class Map extends React.Component {
               style={{
                 boxSizing: `border-box`,
                 border: `1px solid transparent`,
-                width: `240px`,
-                height: `32px`,
+                width: `40vmax`,
+                height: `2vmax`,
                 marginTop: `27px`,
                 padding: `0 12px`,
                 borderRadius: `3px`,
                 boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                fontSize: `14px`,
+                fontSize: `1vw`,
                 outline: `none`,
                 textOverflow: `ellipses`,
+                textAlign: 'center',
               }}
             />
           </SearchBox>

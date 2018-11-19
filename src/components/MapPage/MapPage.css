@@ -1,0 +1,15 @@
+.restaurantList {
+    height: 80vmin;
+    width: 25vmax;
+    overflow-y: scroll;
+    background: #f0db7d;
+    color: black;
+    text-align: center;
+    padding-left: 3vmax;
+}
+
+.citySelect {
+    padding-top: .5vmax;
+    padding-right: 8vmax;
+    padding-bottom: 1vmax;
+}

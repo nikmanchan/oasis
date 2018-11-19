@@ -19,16 +19,31 @@ router.get('/', (req, res) => {
 
 
 /**
- * Get all of the restaurants by city name
+ * Get all of the restaurants in Minneapolis
  */
-router.get('/city', (req, res) => {
-    const query = `SELECT * FROM "myrestaurants" WHERE "address" LIKE '%$1%';`
-    pool.query(query, req.body)
+router.get('/minneapolis', (req, res) => {
+    const query = `SELECT * FROM "myrestaurants" WHERE "address" LIKE '%Minneapolis%';`
+    pool.query(query, req.params.name)
     .then(results => {
         res.send(results.rows);
     })
     .catch(error => {
         console.log('ERROR with GET restaurants:',error);
+        res.sendStatus(500);
+    })
+});
+
+/**
+ * Get all of the restaurants in St. Paul
+ */
+router.get('/:city', (req, res) => {
+    const query = `SELECT * FROM "myrestaurants" WHERE "address" LIKE $1;`
+    pool.query(query, ['%' + req.params.city + '%'])
+    .then(results => {
+        res.send(results.rows);
+    })
+    .catch(error => {
+        console.log('ERROR with GET city restaurants:',error);
         res.sendStatus(500);
     })
 });
