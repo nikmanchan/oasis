@@ -5,17 +5,17 @@ const router = express.Router();
 /**
  * Get all of the restaurants
  */
-router.get('/', (req, res) => {
-    const query = `SELECT * FROM "myrestaurants";`
-    pool.query(query)
-    .then(results => {
-        res.send(results.rows);
-    })
-    .catch(error => {
-        console.log('ERROR with GET restaurants:',error);
-        res.sendStatus(500);
-    })
-});
+// router.get('/', (req, res) => {
+//     const query = `SELECT * FROM "myrestaurants";`
+//     pool.query(query)
+//     .then(results => {
+//         res.send(results.rows);
+//     })
+//     .catch(error => {
+//         console.log('ERROR with GET restaurants:',error);
+//         res.sendStatus(500);
+//     })
+// });
 
 
 /**
