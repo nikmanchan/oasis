@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import './RegisterPage.css'
 
 class RegisterPage extends Component {
   state = {
@@ -19,7 +20,7 @@ class RegisterPage extends Component {
         },
       });
     } else {
-      this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
+      this.props.dispatch({ type: 'REGISTRATION_INPUT_ERROR' });
     }
   } // end registerUser
 
@@ -41,46 +42,51 @@ class RegisterPage extends Component {
           </h2>
         )}
         <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
-          <div>
-            <label htmlFor="username">
-              Username:
+          <h1>Register</h1>
+          <div id="userForm">
+            <div>
+              <label htmlFor="username">
+                Username:
               <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleInputChangeFor('username')}
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="password">
+                Password:
               <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChangeFor('password')}
+                  id="inputPassword"
+                />
+              </label>
+            </div>
+            <div>
+              <input
+                id="registerButton"
+                className="register"
+                type="submit"
+                name="submit"
+                value="Register"
               />
-            </label>
+            </div>
           </div>
-          <div>
-            <input
-              className="register"
-              type="submit"
-              name="submit"
-              value="Register"
-            />
-          </div>
-        </form>
-        <center>
           <button
             type="button"
             className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
+            onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
+            id="register"
           >
             Login
           </button>
+        </form>
+        <center>
         </center>
       </div>
     );

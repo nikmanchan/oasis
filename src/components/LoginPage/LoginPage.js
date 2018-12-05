@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './LoginPage.css'
 
 class LoginPage extends Component {
   state = {
@@ -42,45 +43,51 @@ class LoginPage extends Component {
         )}
         <form onSubmit={this.login}>
           <h1>Login</h1>
-          <div>
-            <label htmlFor="username">
-              Username:
+          <div id="userForm">
+            <div>
+              <label htmlFor="username">
+                Username:
+                <input
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleInputChangeFor('username')}
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="password">
+                Password:
+                <input
+                  id="inputPassword"
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChangeFor('password')}
+                />
+              </label>
+            </div>
+            <div>
               <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
+                className="log-in"
+                type="submit"
+                name="submit"
+                value="Log In"
+                id="loginButton"
               />
-            </label>
+            </div>
+            
           </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
-          </div>
-          <div>
-            <input
-              className="log-in"
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
-          </div>
-        </form>
-        <center>
           <button
             type="button"
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
+            id="register"
           >
             Register
           </button>
+        </form>
+        <center>
         </center>
       </div>
     );

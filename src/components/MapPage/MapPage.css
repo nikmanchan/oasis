@@ -1,5 +1,5 @@
 .restaurantList {
-    height: 80vmin;
+    height: 60vmax;
     width: 25vmax;
     overflow-y: scroll;
     background: #f0db7d;
@@ -10,6 +10,11 @@
 
 .citySelect {
     padding-top: .5vmax;
-    padding-right: 8vmax;
+    padding-right: 7vmax;
     padding-bottom: 1vmax;
+    margin-left: 6vmax;
+}
+#cityInstruct {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }

@@ -42,6 +42,8 @@ const styles = theme => ({
   card: {
       width: '15vmax',
       height: '23vmax',
+      marginBottom: '1vmax',
+      marginLeft: '2vmax',
       // margin: 10,
       // paddingTop: '1vmax',
   },
@@ -110,7 +112,7 @@ class MainMap extends Component {
         <Map 
             googleMapURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCZv9A4Vtnra6r04z9JnNk91zeXwX82O68&v=3.exp&libraries=geometry,drawing,places"
             loadingElement = {<div style={{ height: `100%` }} />}
-            containerElement = {<div style={{ height: `80vmin`, width: '55vmax', float: 'left',}} />}
+            containerElement = {<div style={{ height: `60vmax`, width: '75vmax', float: 'left',}} />}
             mapElement = {<div style={{ height: `100%` }} />}
             isMarkerShown={this.state.isMarkerShown}
             onMarkerClick={this.handleMarkerClick}
@@ -121,9 +123,9 @@ class MainMap extends Component {
               <div className="restaurantList">
               
               <div className="citySelect">
-                <h4>
+                <h5 id="cityInstruct">
                   Select Supported City &emsp;
-                </h4>
+                </h5>
                 
                   <Button size="large"
                       variant="contained"
@@ -131,6 +133,7 @@ class MainMap extends Component {
                       onClick={() => this.setCurrentCity(stPaul)}>
                       St Paul
                   </Button>
+                  
                   <Button size="large"
                           variant="contained"
                           color="primary"onClick={() => this.setCurrentCity(minneapolis)}>
@@ -160,7 +163,6 @@ class MainMap extends Component {
                                             size="small"
                                             variant="outlined"
                                             color="primary"
-                                            // onClick={() => this.props.selectSite(this.props.site)}
                                             onClick={() => this.handleMoreDetailsClick(restaurant.restaurant_id)}
                                         >
                                             More Details

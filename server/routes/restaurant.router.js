@@ -65,15 +65,17 @@ router.post('/', (req, res) => {
 });
 
 
-router.get('/:id', (req, res) => {
+router.get('/specific/:id', (req, res) => {
     const query = `
     SELECT myrestaurants.name, myrestaurants.restaurant_id, myrestaurants.address, myrestaurants.menu_url, myrestaurants.image_url,
     ratings.friendliness, ratings,costliness, ratings.comments
     FROM "ratings"
-    INNER JOIN myrestaurants ON ratings.restaurant_id = myrestaurants.restaurant_id
+    JOIN myrestaurants ON ratings.restaurant_id = myrestaurants.restaurant_id
     WHERE myrestaurants.restaurant_id = $1;`
     pool.query(query, [req.params.id])
     .then(results => {
+        console.log('BACK WITH RESTAURANT DETAILS:', results.rows);
+        
         res.send(results.rows);
     })
     .catch(error => {

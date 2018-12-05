@@ -13,10 +13,11 @@
 }
 
 .ratingsList {
-    height: 460px;
+    height: 31vmax;
     overflow-y: scroll;
     background: #f0db7d;
     color: black;
+    width: 20vmax;
 }
 
 .addRatingsButton {
@@ -25,4 +26,12 @@
 
 .citySelect {
     float: right;
+}
+
+.restaurantLink {
+    font-size: 1.2vw;
+}
+
+#restaurantAddress {
+    font-size: 1.5vw;
 }

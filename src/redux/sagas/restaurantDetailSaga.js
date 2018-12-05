@@ -3,8 +3,9 @@ import { put, takeLatest, } from 'redux-saga/effects';
 // worker Saga: will be fired on "GET_RESTAURANT_DETAIL" actions
 function* getRestaurantDetail(action) {
     try {
-      const details = yield axios.get(`/api/restaurant/${action.payload}`)
+      const details = yield axios.get(`/api/restaurant/specific/${action.payload}`)
       yield put({ type: 'SET_RESTAURANT_DETAILS', payload: details.data });
+      console.log('RESTAURANT DETAILS BACK WITH:', details.data);
       
     } catch (error) {
       console.log('error getting address:', error);
